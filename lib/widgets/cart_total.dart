@@ -24,7 +24,7 @@ class CartTotal extends StatelessWidget {
               ),
             ),
             Text(
-              '\$ ${controller.total}',
+              '₹ ${controller.total}',
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
