@@ -60,7 +60,7 @@ class CatalogProductCard extends StatelessWidget {
           ),
           Expanded(
             child: Text(
-              '\$' + productController.products[index].price.toString(),
+              '₹' + productController.products[index].price.toString(),
               style: TextStyle(
                 fontSize: 15,
                 fontWeight: FontWeight.w600,
@@ -71,6 +71,7 @@ class CatalogProductCard extends StatelessWidget {
           IconButton(
             onPressed: () {
               cartController.addProduct(productController.products[index]);
+              print(productController.products);
             },
             icon: Icon(Icons.add_circle),
           ),
