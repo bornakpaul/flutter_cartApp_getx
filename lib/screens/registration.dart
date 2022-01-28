@@ -3,8 +3,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:getxcart/models/user_model.dart';
-import 'package:getxcart/screens/catalog_screen.dart';
+import 'package:getxcart/screens/home_screen.dart';
 import 'package:getxcart/screens/login_screen.dart';
+import 'package:getxcart/screens/main_screen.dart';
 
 class RegistrationScreen extends StatefulWidget {
   const RegistrationScreen({Key? key}) : super(key: key);
@@ -328,7 +329,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     Fluttertoast.showToast(msg: "Account created successfully");
     Navigator.pushAndRemoveUntil(
         context,
-        MaterialPageRoute(builder: (context) => CatalogScreen()),
+        MaterialPageRoute(builder: (context) => MainScreen()),
         (route) => false);
   }
 }

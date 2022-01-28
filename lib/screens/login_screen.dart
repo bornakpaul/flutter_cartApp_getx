@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:getxcart/screens/catalog_screen.dart';
+import 'package:getxcart/screens/main_screen.dart';
 import 'package:getxcart/screens/registration.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -188,7 +188,7 @@ class _LoginScreenState extends State<LoginScreen> {
           .then((uid) => {
                 Fluttertoast.showToast(msg: "Login Successful"),
                 Navigator.of(context).pushReplacement(
-                    MaterialPageRoute(builder: (context) => CatalogScreen())),
+                    MaterialPageRoute(builder: (context) => MainScreen())),
               })
           .catchError((e) {
         Fluttertoast.showToast(msg: e!.message);

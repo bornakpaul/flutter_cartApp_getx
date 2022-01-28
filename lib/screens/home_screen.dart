@@ -2,19 +2,18 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:getxcart/widgets/favourite_products.dart';
 
-class CatalogScreen extends StatefulWidget {
-  const CatalogScreen({Key? key}) : super(key: key);
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({Key? key}) : super(key: key);
 
   @override
-  _CatalogScreenState createState() => _CatalogScreenState();
+  _HomeScreenState createState() => _HomeScreenState();
 }
 
-class _CatalogScreenState extends State<CatalogScreen> {
+class _HomeScreenState extends State<HomeScreen> {
   //* Carousel
   int _current = 0;
   List imgList = [
     'assets/images/blue.png',
-    'assets/images/green.png',
     'assets/images/blueDark.png',
     'assets/images/brown.png',
   ];
@@ -35,11 +34,14 @@ class _CatalogScreenState extends State<CatalogScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue[200],
+        elevation: 0.0,
         centerTitle: true,
-        title: Text(
-          "EcoCart",
-          style: TextStyle(color: Colors.white),
-        ),
+        title: Text("EcoCart",
+            style: TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+              fontSize: 26,
+            )),
       ),
       body: SingleChildScrollView(
         child: Padding(
