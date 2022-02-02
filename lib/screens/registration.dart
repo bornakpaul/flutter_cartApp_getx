@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:getxcart/constants/color_constants.dart';
 import 'package:getxcart/models/user_model.dart';
 import 'package:getxcart/screens/home_screen.dart';
 import 'package:getxcart/screens/login_screen.dart';
@@ -181,7 +182,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     final registerButton = Material(
       elevation: 5,
       borderRadius: BorderRadius.circular(10.0),
-      color: Colors.blueAccent,
+      color: kPrimaryColor,
       child: MaterialButton(
         padding: EdgeInsets.symmetric(vertical: 15, horizontal: 20),
         minWidth: width,
@@ -208,7 +209,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         leading: IconButton(
           icon: Icon(
             Icons.arrow_back,
-            color: Colors.blue,
+            color: kPrimaryColor,
           ),
           onPressed: () {
             Navigator.pop(context);
@@ -274,7 +275,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                         child: Text(
                           'Sign In',
                           style: TextStyle(
-                            color: Colors.blue,
+                            color: kPrimaryColor,
                             fontWeight: FontWeight.w400,
                             fontSize: 15,
                           ),

@@ -1,7 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:getxcart/screens/main_screen.dart';
+import 'package:getxcart/constants/color_constants.dart';
+import 'package:getxcart/screens/onboarding.dart';
 
 import 'controllers/main_binding.dart';
 
@@ -18,13 +19,13 @@ class CartApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Cart App',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primaryColor: kPrimaryColor,
       ),
       initialRoute: "/",
       getPages: [
         GetPage(
           name: "/",
-          page: () => MainScreen(),
+          page: () => OnBoardingPage(),
           binding: MainBinding(),
         ),
       ],

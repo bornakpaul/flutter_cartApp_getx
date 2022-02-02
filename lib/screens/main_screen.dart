@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:getxcart/constants/color_constants.dart';
 import 'package:getxcart/controllers/main_screen_controller.dart';
 import 'package:getxcart/screens/cart_screen.dart';
 import 'package:getxcart/screens/home_screen.dart';
@@ -27,7 +28,7 @@ class _MainScreenState extends State<MainScreen> {
           ],
         ),
         bottomNavigationBar: BottomNavigationBar(
-          backgroundColor: Colors.blue[300],
+          backgroundColor: kPrimaryColor,
           elevation: 0.0,
           //   type: BottomNavigationBarType.fixed,
           selectedItemColor: Colors.white,

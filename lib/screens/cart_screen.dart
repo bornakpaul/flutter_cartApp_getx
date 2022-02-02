@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:getxcart/constants/color_constants.dart';
 import 'package:getxcart/controllers/cart_controller.dart';
-import 'package:getxcart/models/product_model.dart';
 import 'package:getxcart/widgets/cart_products.dart';
 import 'package:getxcart/widgets/cart_total.dart';
 
@@ -16,6 +16,11 @@ class CartScreen extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           title: Text('Cart'),
+          backgroundColor: kPrimaryColor,
+          leading: Icon(
+            Icons.arrow_back,
+            color: Colors.transparent,
+          ),
         ),
         body: Obx(
           () => controller.products.length == 0
@@ -25,10 +30,27 @@ class CartScreen extends StatelessWidget {
                       child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text('Cart is empty'),
+                      Image.asset(
+                        'assets/images/empty_cart.png',
+                        scale: 6.0,
+                      ),
+                      Text(
+                        'Your Cart is empty!',
+                        style: TextStyle(
+                          color: kPrimaryColor,
+                          fontSize: 20,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
                       ElevatedButton(
                         onPressed: () => Get.back(),
                         child: Text("Add products"),
+                        style: ButtonStyle(
+                          backgroundColor:
+                              MaterialStateProperty.all<Color>(kPrimaryColor),
+                        ),
                       ),
                     ],
                   )))
@@ -40,10 +62,10 @@ class CartScreen extends StatelessWidget {
                     CartTotal(),
                     SizedBox(height: 8),
                     ElevatedButton(
-              onPressed: () {},
-              child: Text("Place Order"),
-            ),
-            SizedBox(height: 15),
+                      onPressed: () {},
+                      child: Text("Place Order"),
+                    ),
+                    SizedBox(height: 15),
                   ],
                 ),
         ));

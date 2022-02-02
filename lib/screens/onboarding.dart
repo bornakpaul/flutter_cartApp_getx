@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:getxcart/constants/color_constants.dart';
 import 'package:getxcart/controllers/onboarding_controller.dart';
 
 class OnBoardingPage extends StatelessWidget {
@@ -44,7 +45,7 @@ class OnBoardingPage extends StatelessWidget {
                         _controller.onboardingPages[index].title,
                         style: TextStyle(
                           fontSize: 24,
-                          color: Colors.blue,
+                          color: kPrimaryColor,
                           fontWeight: FontWeight.w600,
                         ),
                       ),
@@ -79,7 +80,7 @@ class OnBoardingPage extends StatelessWidget {
                       height: 12,
                       decoration: BoxDecoration(
                         color: _controller.selectedPageIndex.value == index
-                            ? Colors.blue
+                            ? kPrimaryColor
                             : Colors.grey,
                         shape: BoxShape.circle,
                       ),
@@ -92,6 +93,7 @@ class OnBoardingPage extends StatelessWidget {
               right: 20,
               bottom: 20,
               child: FloatingActionButton(
+                backgroundColor: kPrimaryColor,
                 elevation: 0,
                 onPressed: () {
                   _controller.forwardAction();

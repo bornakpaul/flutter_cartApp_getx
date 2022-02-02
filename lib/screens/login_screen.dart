@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:getxcart/constants/color_constants.dart';
 import 'package:getxcart/screens/main_screen.dart';
 import 'package:getxcart/screens/registration.dart';
 
@@ -89,7 +90,7 @@ class _LoginScreenState extends State<LoginScreen> {
     final loginButton = Material(
       elevation: 5,
       borderRadius: BorderRadius.circular(10.0),
-      color: Colors.blueAccent,
+      color: kPrimaryColor,
       child: MaterialButton(
         padding: EdgeInsets.symmetric(vertical: 15, horizontal: 20),
         minWidth: width,
@@ -162,7 +163,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           child: Text(
                             'Sign Up',
                             style: TextStyle(
-                              color: Colors.blue,
+                              color: kPrimaryColor,
                               fontWeight: FontWeight.w400,
                               fontSize: 15,
                             ),

@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:getxcart/constants/color_constants.dart';
 import 'package:getxcart/controllers/cart_controller.dart';
 import 'package:getxcart/controllers/product_controller.dart';
 
@@ -130,7 +131,7 @@ class CatalogProductCard extends StatelessWidget {
                     child: Container(
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
-                        color: Colors.blue[400],
+                        color: kPrimaryColor,
                         borderRadius: BorderRadius.circular(4.0),
                       ),
                       child: Center(

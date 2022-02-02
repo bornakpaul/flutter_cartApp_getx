@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:getxcart/constants/color_constants.dart';
 import 'package:getxcart/widgets/favourite_products.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -33,15 +34,21 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blue[200],
+        backgroundColor: kPrimaryColor,
         elevation: 0.0,
         centerTitle: true,
-        title: Text("EcoCart",
-            style: TextStyle(
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
-              fontSize: 26,
-            )),
+        title: Text(
+          "EcoCart",
+          style: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+            fontSize: 26,
+          ),
+        ),
+        leading: Icon(
+          Icons.arrow_left,
+          color: Colors.transparent,
+        ),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -298,7 +305,7 @@ class SearchBarWidget extends StatelessWidget {
         borderRadius: BorderRadius.circular(6.0),
         border: Border.all(
           width: 2,
-          color: Colors.blue.withOpacity(0.4),
+          color: kPrimaryColor,
         ),
       ),
       child: TextFormField(
@@ -315,7 +322,7 @@ class SearchBarWidget extends StatelessWidget {
             onPressed: () {},
             icon: const Icon(
               Icons.search,
-              color: Colors.lightBlue,
+              color: kPrimaryColor,
             ),
           ),
         ),
