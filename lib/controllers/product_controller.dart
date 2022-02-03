@@ -2,7 +2,7 @@ import 'package:get/get.dart';
 import 'package:getxcart/models/product_model.dart';
 import 'package:getxcart/services/firestore_db.dart';
 
-class ProductController extends GetxController {
+class MostPurchasedController extends GetxController {
   final products = <Product>[].obs;
 
   @override

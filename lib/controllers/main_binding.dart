@@ -10,7 +10,7 @@ class MainBinding extends Bindings {
     // TODO: implement dependencies
     Get.lazyPut<MainController>(() => MainController());
     Get.lazyPut<CartController>(() => CartController());
-    Get.lazyPut<ProductController>(() => ProductController());
+    Get.lazyPut<MostPurchasedController>(() => MostPurchasedController());
     Get.lazyPut<ProfileController>(() => ProfileController());
     //Get.lazyPut<ProductDescController>(() => ProductDescController());
     //Get.lazyPut<PhoneAuthController>(() => PhoneAuthController(phoneNumber: ''));

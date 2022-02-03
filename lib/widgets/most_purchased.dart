@@ -5,10 +5,10 @@ import 'package:getxcart/constants/color_constants.dart';
 import 'package:getxcart/controllers/cart_controller.dart';
 import 'package:getxcart/controllers/product_controller.dart';
 
-class FavouriteProducts extends StatelessWidget {
-  final productController = Get.put(ProductController());
+class MostPurchased extends StatelessWidget {
+  final mostPurchasedController = Get.put(MostPurchasedController());
 
-  FavouriteProducts({Key? key}) : super(key: key);
+  MostPurchased({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,20 +17,20 @@ class FavouriteProducts extends StatelessWidget {
         height: 200,
         child: ListView.builder(
             scrollDirection: Axis.horizontal,
-            itemCount: productController.products.length,
+            itemCount: mostPurchasedController.products.length,
             itemBuilder: (BuildContext context, int index) {
-              return CatalogProductCard(index: index);
+              return MostPurchasedCard(index: index);
             }),
       ),
     );
   }
 }
 
-class CatalogProductCard extends StatelessWidget {
+class MostPurchasedCard extends StatelessWidget {
   final cartController = Get.put(CartController());
-  final ProductController productController = Get.find();
+  final MostPurchasedController productController = Get.find();
   final int index;
-  CatalogProductCard({
+  MostPurchasedCard({
     Key? key,
     required this.index,
   }) : super(key: key);

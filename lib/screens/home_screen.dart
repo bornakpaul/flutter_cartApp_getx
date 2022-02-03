@@ -1,7 +1,8 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:getxcart/constants/color_constants.dart';
-import 'package:getxcart/widgets/favourite_products.dart';
+import 'package:getxcart/screens/product_screen.dart';
+import 'package:getxcart/widgets/most_purchased.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -139,21 +140,21 @@ class _HomeScreenState extends State<HomeScreen> {
                       'assets/images/books.jpeg',
                       fit: BoxFit.fill,
                     ),
-                    text: 'Books',
+                    productName: 'Books',
                   ),
                   CategorySectionCards(
                     img: Image.asset(
                       'assets/images/Notebook.jpeg',
                       fit: BoxFit.fill,
                     ),
-                    text: 'Notebook',
+                    productName: 'Notebook',
                   ),
                   CategorySectionCards(
                     img: Image.asset(
                       'assets/images/spiral.jpeg',
                       fit: BoxFit.fill,
                     ),
-                    text: 'Diary',
+                    productName: 'Diary',
                   ),
                 ],
               ),
@@ -168,21 +169,21 @@ class _HomeScreenState extends State<HomeScreen> {
                       'assets/images/pens.jpeg',
                       fit: BoxFit.fill,
                     ),
-                    text: 'Pens',
+                    productName: 'Pens',
                   ),
                   CategorySectionCards(
                     img: Image.asset(
                       'assets/images/pencil.jpeg',
                       fit: BoxFit.fill,
                     ),
-                    text: 'Pencil',
+                    productName: 'Pencil',
                   ),
                   CategorySectionCards(
                     img: Image.asset(
                       'assets/images/highlighter.jpeg',
                       fit: BoxFit.fill,
                     ),
-                    text: 'Highlighter',
+                    productName: 'Highlighter',
                   ),
                 ],
               ),
@@ -197,21 +198,21 @@ class _HomeScreenState extends State<HomeScreen> {
                       'assets/images/colouredpages.jpeg',
                       fit: BoxFit.fill,
                     ),
-                    text: 'A4 sheet',
+                    productName: 'A4 sheet',
                   ),
                   CategorySectionCards(
                     img: Image.asset(
                       'assets/images/stickynotes.jpeg',
                       fit: BoxFit.fill,
                     ),
-                    text: 'StickyNotes',
+                    productName: 'StickyNotes',
                   ),
                   CategorySectionCards(
                     img: Image.asset(
                       'assets/images/others.jpg',
                       fit: BoxFit.fill,
                     ),
-                    text: 'Other Items',
+                    productName: 'Others',
                   ),
                 ],
               ),
@@ -226,7 +227,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   fontWeight: FontWeight.w600,
                 ),
               ),
-              FavouriteProducts(),
+              MostPurchased(),
               SizedBox(
                 height: 15.0,
               ),
@@ -240,48 +241,57 @@ class _HomeScreenState extends State<HomeScreen> {
 
 class CategorySectionCards extends StatelessWidget {
   final Image img;
-  final String text;
+  final String productName;
   const CategorySectionCards({
     required this.img,
-    required this.text,
+    required this.productName,
     Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(4),
-        border: Border.all(color: Colors.black),
-      ),
-      child: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(1.5),
-            child: Container(
-              height: 80,
-              width: 110,
-              child: ClipRRect(
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(4),
-                  topRight: Radius.circular(4),
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => ProductScreen(productName: productName),
+            ));
+      },
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(4),
+          border: Border.all(color: Colors.black),
+        ),
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(1.5),
+              child: Container(
+                height: 80,
+                width: 110,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(4),
+                    topRight: Radius.circular(4),
+                  ),
+                  child: img,
                 ),
-                child: img,
               ),
             ),
-          ),
-          Padding(
-            padding: EdgeInsets.all(6.0),
-            child: Text(
-              text,
-              style: const TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.w500,
-                fontFamily: 'Poppins',
+            Padding(
+              padding: EdgeInsets.all(6.0),
+              child: Text(
+                productName,
+                style: const TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w500,
+                  fontFamily: 'Poppins',
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

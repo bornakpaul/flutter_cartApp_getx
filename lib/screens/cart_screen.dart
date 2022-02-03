@@ -15,7 +15,14 @@ class CartScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Cart'),
+          title: Text(
+            'Cart',
+            style: TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+              fontSize: 26,
+            ),
+          ),
           backgroundColor: kPrimaryColor,
           leading: Icon(
             Icons.arrow_back,
@@ -44,14 +51,6 @@ class CartScreen extends StatelessWidget {
                       SizedBox(
                         height: 10,
                       ),
-                      ElevatedButton(
-                        onPressed: () => Get.back(),
-                        child: Text("Add products"),
-                        style: ButtonStyle(
-                          backgroundColor:
-                              MaterialStateProperty.all<Color>(kPrimaryColor),
-                        ),
-                      ),
                     ],
                   )))
               : Column(
@@ -64,6 +63,10 @@ class CartScreen extends StatelessWidget {
                     ElevatedButton(
                       onPressed: () {},
                       child: Text("Place Order"),
+                      style: ButtonStyle(
+                        backgroundColor:
+                            MaterialStateProperty.all<Color>(kPrimaryColor),
+                      ),
                     ),
                     SizedBox(height: 15),
                   ],
