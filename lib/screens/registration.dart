@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:getxcart/constants/color_constants.dart';
 import 'package:getxcart/models/user_model.dart';
-import 'package:getxcart/screens/home_screen.dart';
 import 'package:getxcart/screens/login_screen.dart';
 import 'package:getxcart/screens/main_screen.dart';
 

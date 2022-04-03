@@ -15,7 +15,8 @@ class CartScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text(
+          centerTitle: true,
+          title: const Text(
             'Cart',
             style: TextStyle(
               color: Colors.white,
@@ -24,7 +25,7 @@ class CartScreen extends StatelessWidget {
             ),
           ),
           backgroundColor: kPrimaryColor,
-          leading: Icon(
+          leading: const Icon(
             Icons.arrow_back,
             color: Colors.transparent,
           ),

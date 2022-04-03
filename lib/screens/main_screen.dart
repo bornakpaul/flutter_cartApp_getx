@@ -6,6 +6,8 @@ import 'package:getxcart/controllers/main_screen_controller.dart';
 import 'package:getxcart/screens/cart_screen.dart';
 import 'package:getxcart/screens/home_screen.dart';
 import 'package:getxcart/screens/profile_screen.dart';
+import 'package:getxcart/services/firestore_db.dart';
+import 'package:provider/provider.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
@@ -24,7 +26,10 @@ class _MainScreenState extends State<MainScreen> {
           children: [
             HomeScreen(),
             CartScreen(),
-            ProfileScreen(),
+            Provider(
+              create: (context) => FirestoreDB(),
+              child: ProfileScreen(),
+            ),
           ],
         ),
         bottomNavigationBar: BottomNavigationBar(

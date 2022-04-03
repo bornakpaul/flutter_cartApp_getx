@@ -1,12 +1,14 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getxcart/constants/color_constants.dart';
 import 'package:getxcart/controllers/cart_controller.dart';
 import 'package:getxcart/controllers/product_controller.dart';
+import 'package:getxcart/models/product_model.dart';
 
 class MostPurchased extends StatelessWidget {
-  final mostPurchasedController = Get.put(MostPurchasedController());
+//   final mostPurchasedController = Get.put(
+//     MostPurchasedController(),
+//   );
 
   MostPurchased({Key? key}) : super(key: key);
 
@@ -17,7 +19,7 @@ class MostPurchased extends StatelessWidget {
         height: 200,
         child: ListView.builder(
             scrollDirection: Axis.horizontal,
-            itemCount: mostPurchasedController.products.length,
+            itemCount: Product.products.length,
             itemBuilder: (BuildContext context, int index) {
               return MostPurchasedCard(index: index);
             }),
@@ -46,8 +48,8 @@ class MostPurchasedCard extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(6.0),
           color: Colors.white,
-          boxShadow: [
-            new BoxShadow(
+          boxShadow: const [
+            BoxShadow(
               offset: Offset(0, 0),
               blurRadius: 4,
               color: Color.fromRGBO(0, 0, 0, 0.16),
@@ -58,20 +60,20 @@ class MostPurchasedCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Container(
-              padding: EdgeInsets.all(4.0),
+              padding: const EdgeInsets.all(4.0),
               height: 100,
               width: 150,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(6.0),
               ),
               child: ClipRRect(
-                borderRadius: BorderRadius.only(
+                borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(5.0),
                   topRight: Radius.circular(5.0),
                 ),
                 child: Image(
                   image: NetworkImage(
-                    productController.products[index].imageUrl,
+                    Product.products[index].imageUrl,
                   ),
                   fit: BoxFit.fill,
                 ),
@@ -84,32 +86,31 @@ class MostPurchasedCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    productController.products[index].name,
-                    style: TextStyle(
+                    Product.products[index].name,
+                    style: const TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.w600,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 3.0,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Text(
-                        '₹' +
-                            productController.products[index].price.toString(),
-                        style: TextStyle(
+                        '₹' + Product.products[index].price.toString(),
+                        style: const TextStyle(
                           fontSize: 15,
                           fontWeight: FontWeight.w600,
                           color: Colors.green,
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 10.0,
                       ),
                       Text(
-                        '10% off',
+                        Product.products[index].discount.toString() + '% off',
                         style: TextStyle(
                           fontSize: 13,
                           fontWeight: FontWeight.w600,
@@ -120,13 +121,12 @@ class MostPurchasedCard extends StatelessWidget {
                       ),
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 3.0,
                   ),
                   GestureDetector(
                     onTap: () {
-                      cartController
-                          .addProduct(productController.products[index]);
+                      cartController.addProduct(Product.products[index]);
                     },
                     child: Container(
                       alignment: Alignment.center,
@@ -134,9 +134,9 @@ class MostPurchasedCard extends StatelessWidget {
                         color: kPrimaryColor,
                         borderRadius: BorderRadius.circular(4.0),
                       ),
-                      child: Center(
+                      child: const Center(
                         child: Padding(
-                          padding: const EdgeInsets.symmetric(
+                          padding: EdgeInsets.symmetric(
                             vertical: 4.0,
                             horizontal: 35.0,
                           ),

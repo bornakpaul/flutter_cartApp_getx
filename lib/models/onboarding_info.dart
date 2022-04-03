@@ -3,9 +3,5 @@ class OnBoardingInfo {
   final title;
   final description;
 
-  OnBoardingInfo(
-    this.imageAsset,
-    this.description,
-    this.title,
-  );
+  const OnBoardingInfo({this.imageAsset, this.description, this.title});
 }

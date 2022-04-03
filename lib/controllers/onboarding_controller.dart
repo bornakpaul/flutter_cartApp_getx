@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/utils.dart';
 import 'package:getxcart/models/onboarding_info.dart';
 import 'package:getxcart/screens/login_screen.dart';
 
@@ -17,21 +16,24 @@ class OnboardingController extends GetxController {
     }
   }
 
-  List<OnBoardingInfo> onboardingPages = [
+  List<OnBoardingInfo> onboardingPages = const [
     OnBoardingInfo(
-      'assets/images/img1.png',
-      'Order from your college stationary shop for best quality products.',
-      'College Stationary',
+      imageAsset: 'assets/images/img1.png',
+      description:
+          'Order from your college stationary shop for best quality products.',
+      title: 'College Stationary',
     ),
     OnBoardingInfo(
-      'assets/images/img2.png',
-      'Fast and Free delivery of your products instantly, as you order',
-      'Fast Delivery',
+      imageAsset: 'assets/images/img2.png',
+      description:
+          'Fast and Free delivery of your products instantly, as you order',
+      title: 'Fast Delivery',
     ),
     OnBoardingInfo(
-      'assets/images/img3.png',
-      'Easily pay for your products through any medium - online or cash.',
-      'Easy Payments',
+      imageAsset: 'assets/images/img3.png',
+      description:
+          'Easily pay for your products through any medium - online or cash.',
+      title: 'Easy Payments',
     ),
   ];
 }

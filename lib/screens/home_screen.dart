@@ -12,7 +12,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  //* Carousel
   int _current = 0;
   List imgList = [
     'assets/images/blue.png',
@@ -38,7 +37,7 @@ class _HomeScreenState extends State<HomeScreen> {
         backgroundColor: kPrimaryColor,
         elevation: 0.0,
         centerTitle: true,
-        title: Text(
+        title: const Text(
           "EcoCart",
           style: TextStyle(
             color: Colors.white,
@@ -46,7 +45,7 @@ class _HomeScreenState extends State<HomeScreen> {
             fontSize: 26,
           ),
         ),
-        leading: Icon(
+        leading: const Icon(
           Icons.arrow_left,
           color: Colors.transparent,
         ),
@@ -60,7 +59,7 @@ class _HomeScreenState extends State<HomeScreen> {
               SearchBarWidget(
                 searchStationaryCntlr: searchStationaryCntlr,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               CarouselSlider(
@@ -120,7 +119,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   },
                 ),
               ),
-              Text(
+              const Text(
                 'Choose a product',
                 style: TextStyle(
                   color: Colors.black,
@@ -128,7 +127,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   fontWeight: FontWeight.w600,
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 15.0,
               ),
               //*
@@ -158,7 +157,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               Row(
@@ -187,7 +186,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               Row(
@@ -216,10 +215,10 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 15.0,
               ),
-              Text(
+              const Text(
                 'Most Purchased',
                 style: TextStyle(
                   color: Colors.black,
@@ -228,7 +227,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
               MostPurchased(),
-              SizedBox(
+              const SizedBox(
                 height: 15.0,
               ),
             ],
