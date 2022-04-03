@@ -148,28 +148,28 @@ class ProfileScreen extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(
-            height: 10,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                "Name: ",
-                style: TextStyle(
-                  fontSize: 18,
-                  color: Colors.grey.shade500,
-                ),
-              ),
-              Text(
-                "${user.email ?? 'Anonymous'}",
-                style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                    color: kPrimaryColor),
-              ),
-            ],
-          ),
+          //   SizedBox(
+          //     height: 10,
+          //   ),
+          //   Row(
+          //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          //     children: [
+          //       Text(
+          //         "Name: ",
+          //         style: TextStyle(
+          //           fontSize: 18,
+          //           color: Colors.grey.shade500,
+          //         ),
+          //       ),
+          //       Text(
+          //         "${user.email ?? 'Anonymous'}",
+          //         style: TextStyle(
+          //             fontSize: 18,
+          //             fontWeight: FontWeight.bold,
+          //             color: kPrimaryColor),
+          //       ),
+          //     ],
+          //   ),
         ],
       ),
     );

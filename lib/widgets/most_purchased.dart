@@ -14,17 +14,20 @@ class MostPurchased extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Obx(
-      () => Container(
-        height: 200,
-        child: ListView.builder(
-            scrollDirection: Axis.horizontal,
-            itemCount: Product.products.length,
-            itemBuilder: (BuildContext context, int index) {
-              return MostPurchasedCard(index: index);
-            }),
-      ),
-    );
+    return
+        //Obx(
+        //() =>
+        Container(
+      height: 200,
+      child: ListView.builder(
+          scrollDirection: Axis.horizontal,
+          itemCount: Product.products.length,
+          itemBuilder: (BuildContext context, int index) {
+            return MostPurchasedCard(index: index);
+          }),
+    )
+        //)
+        ;
   }
 }
 
