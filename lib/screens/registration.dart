@@ -20,15 +20,14 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
 
   //! editing controller
   final TextEditingController firstNameEditingController =
-      new TextEditingController();
+      TextEditingController();
   final TextEditingController secondNameEditingController =
-      new TextEditingController();
-  final TextEditingController emailEditingController =
-      new TextEditingController();
+      TextEditingController();
+  final TextEditingController emailEditingController = TextEditingController();
   final TextEditingController passwordEditingController =
-      new TextEditingController();
+      TextEditingController();
   final TextEditingController confirmPasswordEditingController =
-      new TextEditingController();
+      TextEditingController();
 
   //! firebase
   final _auth = FirebaseAuth.instance;
