@@ -65,11 +65,7 @@ class _MainScreenState extends State<MainScreen> {
             String message =
                 "Hey EcoCart team. I am facing some issues. Could you please assist me ?";
             String _url = "whatsapp://send?phone=$number&text=$message";
-            // if (await canLaunchUrl(Uri.parse(_url))) {
             await launchUrl(Uri.parse(_url));
-            // } else {
-            //   throw 'Could not launch $_url';
-            // }
           },
           child: const Icon(
             Icons.support_agent_rounded,
