@@ -33,7 +33,7 @@ class CartScreen extends StatelessWidget {
         ),
         body: Obx(
           () => controller.products.length == 0
-              ? Container(
+              ? SizedBox(
                   height: MediaQuery.of(context).size.height,
                   child: Center(
                       child: Column(

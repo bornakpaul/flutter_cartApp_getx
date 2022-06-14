@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:getxcart/constants/color_constants.dart';
 import 'package:getxcart/screens/main_screen.dart';
@@ -25,10 +26,10 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
+    /// Secure storage to store login details
+
     //! MediaQuery sizes
     final width = MediaQuery.of(context).size.width;
-    final height = MediaQuery.of(context).size.height;
-
     //! email field
     final emailField = TextFormField(
       autofocus: false,
@@ -49,8 +50,9 @@ class _LoginScreenState extends State<LoginScreen> {
       },
       textInputAction: TextInputAction.next,
       decoration: InputDecoration(
-        prefixIcon: Icon(Icons.mail),
-        contentPadding: EdgeInsets.symmetric(vertical: 15, horizontal: 20),
+        prefixIcon: const Icon(Icons.mail),
+        contentPadding:
+            const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
         hintText: "Email",
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
@@ -64,21 +66,23 @@ class _LoginScreenState extends State<LoginScreen> {
       controller: passwordController,
       obscureText: true,
       validator: (value) {
-        RegExp regex = new RegExp(r'^.{6,}$');
+        RegExp regex = RegExp(r'^.{6,}$');
         if (value!.isEmpty) {
           return ("Password is required for login");
         }
         if (!regex.hasMatch(value)) {
           return ("Enter valid password(min. 6 char)");
         }
+        return null;
       },
       onSaved: (value) {
         passwordController.text = value!;
       },
-      textInputAction: TextInputAction.done,
+      textInputAction: TextInputAction.next,
       decoration: InputDecoration(
-        prefixIcon: Icon(Icons.vpn_key),
-        contentPadding: EdgeInsets.symmetric(vertical: 15, horizontal: 20),
+        prefixIcon: const Icon(Icons.vpn_key),
+        contentPadding:
+            const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
         hintText: "Password",
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
@@ -92,7 +96,7 @@ class _LoginScreenState extends State<LoginScreen> {
       borderRadius: BorderRadius.circular(10.0),
       color: kPrimaryColor,
       child: MaterialButton(
-        padding: EdgeInsets.symmetric(vertical: 15, horizontal: 20),
+        padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
         minWidth: width,
         onPressed: () {
           signIn(
@@ -100,7 +104,7 @@ class _LoginScreenState extends State<LoginScreen> {
             passwordController.text,
           );
         },
-        child: Text(
+        child: const Text(
           "Login",
           textAlign: TextAlign.center,
           style: TextStyle(
@@ -133,34 +137,34 @@ class _LoginScreenState extends State<LoginScreen> {
                         fit: BoxFit.contain,
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 40,
                     ),
                     emailField,
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                     passwordField,
-                    SizedBox(
+                    const SizedBox(
                       height: 40,
                     ),
                     loginButton,
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text('Don\'t have an account? '),
+                        const Text('Don\'t have an account? '),
                         GestureDetector(
                           onTap: () {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) =>
-                                        RegistrationScreen()));
+                                        const RegistrationScreen()));
                           },
-                          child: Text(
+                          child: const Text(
                             'Sign Up',
                             style: TextStyle(
                               color: kPrimaryColor,
@@ -183,13 +187,17 @@ class _LoginScreenState extends State<LoginScreen> {
 
   //! login function
   void signIn(String email, String password) async {
+    const _storage = FlutterSecureStorage();
+    const options = IOSOptions(accessibility: IOSAccessibility.first_unlock);
     if (_formkey.currentState!.validate()) {
       await _auth
           .signInWithEmailAndPassword(email: email, password: password)
           .then((uid) => {
                 Fluttertoast.showToast(msg: "Login Successful"),
-                Navigator.of(context).pushReplacement(
-                    MaterialPageRoute(builder: (context) => MainScreen())),
+                Navigator.of(context).pushReplacement(MaterialPageRoute(
+                    builder: (context) => const MainScreen())),
+                _storage.write(
+                    key: "isLoggedIn", value: 'true', iOptions: options),
               })
           .catchError((e) {
         Fluttertoast.showToast(msg: e!.message);
