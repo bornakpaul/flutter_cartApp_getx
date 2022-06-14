@@ -1,0 +1,4 @@
+flutter_native_splash:
+  image: assets/images/eco_cart_logo.png
+  color: "ffffff"
+  android_disable_fullscreen: true

@@ -52,7 +52,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(8.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -65,8 +65,8 @@ class _HomeScreenState extends State<HomeScreen> {
               CarouselSlider(
                 options: CarouselOptions(
                   autoPlay: true,
-                  autoPlayInterval: Duration(seconds: 3),
-                  autoPlayAnimationDuration: Duration(milliseconds: 800),
+                  autoPlayInterval: const Duration(seconds: 2),
+                  autoPlayAnimationDuration: const Duration(milliseconds: 800),
                   autoPlayCurve: Curves.fastOutSlowIn,
                   viewportFraction: 1,
                   height: 150.0,
@@ -84,7 +84,6 @@ class _HomeScreenState extends State<HomeScreen> {
                         width: MediaQuery.of(context).size.width,
                         margin: const EdgeInsets.symmetric(horizontal: 10.0),
                         decoration: BoxDecoration(
-                            color: Color(0xff0957DE),
                             borderRadius: BorderRadius.circular(6.0)),
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(6.0),

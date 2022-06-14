@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:get/get.dart';
 import 'package:getxcart/constants/color_constants.dart';
 import 'package:getxcart/services/firestore_db.dart';
 import 'package:provider/provider.dart';
@@ -88,7 +90,7 @@ class ProfileScreen extends StatelessWidget {
                     }
                   },
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 Row(
@@ -99,19 +101,12 @@ class ProfileScreen extends StatelessWidget {
                         backgroundColor:
                             MaterialStateProperty.all(kPrimaryColor),
                       ),
-                      onPressed: () {},
-                      child: Text('Logout'),
-                    ),
-                    SizedBox(
-                      width: 15,
-                    ),
-                    ElevatedButton(
-                      style: ButtonStyle(
-                        backgroundColor:
-                            MaterialStateProperty.all(kPrimaryColor),
-                      ),
-                      onPressed: () {},
-                      child: Text('Change Account'),
+                      onPressed: () async {
+                        const storage = FlutterSecureStorage();
+                        await storage.delete(key: "isLoggedIn");
+                        Get.until((route) => Get.currentRoute == "/onBoarding");
+                      },
+                      child: const Text('Logout'),
                     ),
                   ],
                 ),
