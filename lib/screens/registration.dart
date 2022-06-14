@@ -45,7 +45,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
       controller: firstNameEditingController,
       keyboardType: TextInputType.text,
       validator: (value) {
-        RegExp regex = new RegExp(r'^.{3,}$');
+        RegExp regex = RegExp(r'^.{3,}$');
         if (value!.isEmpty) {
           return ("First name is required");
         }
@@ -59,8 +59,9 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
       },
       textInputAction: TextInputAction.next,
       decoration: InputDecoration(
-        prefixIcon: Icon(Icons.account_circle),
-        contentPadding: EdgeInsets.symmetric(vertical: 15, horizontal: 20),
+        prefixIcon: const Icon(Icons.account_circle),
+        contentPadding:
+            const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
         hintText: "First Name",
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
@@ -74,7 +75,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
       controller: secondNameEditingController,
       keyboardType: TextInputType.text,
       validator: (value) {
-        RegExp regex = new RegExp(r'^.{3,}$');
+        RegExp regex = RegExp(r'^.{3,}$');
         if (value!.isEmpty) {
           return ("Second name is required");
         }
@@ -85,8 +86,9 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
       },
       textInputAction: TextInputAction.next,
       decoration: InputDecoration(
-        prefixIcon: Icon(Icons.account_circle),
-        contentPadding: EdgeInsets.symmetric(vertical: 15, horizontal: 20),
+        prefixIcon: const Icon(Icons.account_circle),
+        contentPadding:
+            const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
         hintText: "Second Name",
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
@@ -114,8 +116,9 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
       },
       textInputAction: TextInputAction.next,
       decoration: InputDecoration(
-        prefixIcon: Icon(Icons.mail),
-        contentPadding: EdgeInsets.symmetric(vertical: 15, horizontal: 20),
+        prefixIcon: const Icon(Icons.mail),
+        contentPadding:
+            const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
         hintText: "Email",
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
@@ -129,7 +132,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
       controller: passwordEditingController,
       obscureText: true,
       validator: (value) {
-        RegExp regex = new RegExp(r'^.{6,}$');
+        RegExp regex = RegExp(r'^.{6,}$');
         if (value!.isEmpty) {
           return ("Password is required");
         }
@@ -142,8 +145,9 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
       },
       textInputAction: TextInputAction.next,
       decoration: InputDecoration(
-        prefixIcon: Icon(Icons.vpn_key),
-        contentPadding: EdgeInsets.symmetric(vertical: 15, horizontal: 20),
+        prefixIcon: const Icon(Icons.vpn_key),
+        contentPadding:
+            const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
         hintText: "Password",
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
@@ -168,8 +172,9 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
       },
       textInputAction: TextInputAction.done,
       decoration: InputDecoration(
-        prefixIcon: Icon(Icons.vpn_key),
-        contentPadding: EdgeInsets.symmetric(vertical: 15, horizontal: 20),
+        prefixIcon: const Icon(Icons.vpn_key),
+        contentPadding:
+            const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
         hintText: "Confirm Password",
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
@@ -183,12 +188,12 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
       borderRadius: BorderRadius.circular(10.0),
       color: kPrimaryColor,
       child: MaterialButton(
-        padding: EdgeInsets.symmetric(vertical: 15, horizontal: 20),
+        padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
         minWidth: width,
         onPressed: () {
           signUp(emailEditingController.text, passwordEditingController.text);
         },
-        child: Text(
+        child: const Text(
           "Sign Up",
           textAlign: TextAlign.center,
           style: TextStyle(
@@ -233,45 +238,45 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                       fit: BoxFit.contain,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   firstNameField,
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   secondNameField,
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   emailField,
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   passwordField,
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   confirmPasswordField,
-                  SizedBox(
+                  const SizedBox(
                     height: 40,
                   ),
                   registerButton,
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text('Already have an account? '),
+                      const Text('Already have an account? '),
                       GestureDetector(
                         onTap: () {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => LoginScreen()));
+                                  builder: (context) => const LoginScreen()));
                         },
-                        child: Text(
+                        child: const Text(
                           'Sign In',
                           style: TextStyle(
                             color: kPrimaryColor,
