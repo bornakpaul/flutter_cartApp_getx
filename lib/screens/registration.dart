@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:getxcart/constants/color_constants.dart';
 import 'package:getxcart/models/user_model.dart';
@@ -308,6 +309,8 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     //! calling our firestore
     //! calling our user model
     //! sending these values
+    const _storage = FlutterSecureStorage();
+    const options = IOSOptions(accessibility: IOSAccessibility.first_unlock);
 
     FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
     User? user = _auth.currentUser;
@@ -326,9 +329,10 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         .set(userModel.toMap());
 
     Fluttertoast.showToast(msg: "Account created successfully");
+    _storage.write(key: "isLoggedIn", value: 'true', iOptions: options);
     Navigator.pushAndRemoveUntil(
         context,
-        MaterialPageRoute(builder: (context) => MainScreen()),
+        MaterialPageRoute(builder: (context) => const MainScreen()),
         (route) => false);
   }
 }

@@ -1,8 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.getxcart">
+    package="com.borntech.ecocart">
   <uses-permission android:name="android.permission.INTERNET" /> 
    <application
-        android:label="getxcart"
+        android:label="EcoCart"
         android:icon="@mipmap/eco_cart_logo">
         <activity
             android:name=".MainActivity"

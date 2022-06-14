@@ -1,48 +1,49 @@
 {
   "project_info": {
-    "project_number": "466987975172",
-    "project_id": "getxcart-9e6c4",
-    "storage_bucket": "getxcart-9e6c4.appspot.com"
+    "project_number": "350038530235",
+    "firebase_url": "https://ecocart-c66fe-default-rtdb.firebaseio.com",
+    "project_id": "ecocart-c66fe",
+    "storage_bucket": "ecocart-c66fe.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:466987975172:android:09e327c521f7a73c812b51",
+        "mobilesdk_app_id": "1:350038530235:android:b107a4bc9588e60c5ff19e",
         "android_client_info": {
-          "package_name": "com.example.getxcart"
+          "package_name": "com.borntech.ecocart"
         }
       },
       "oauth_client": [
         {
-          "client_id": "466987975172-qm836pr58u56ebbki6ku6m4gs1en1ci2.apps.googleusercontent.com",
+          "client_id": "350038530235-0fv1vg4lb15374dqq6etljo5dr3jfnsb.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.example.getxcart",
+            "package_name": "com.borntech.ecocart",
             "certificate_hash": "e8cd04c7b518bc600a6d170befabc67ed9518f47"
           }
         },
         {
-          "client_id": "466987975172-ffedndjb2iv344cec5avd3k4rba2uu16.apps.googleusercontent.com",
+          "client_id": "350038530235-l7m91cca1eb9p5ebc9gi7krlkefi5lg7.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDVc8vF5tfWXn2s1Ij9mnrqM4t5DD5YGq0"
+          "current_key": "AIzaSyC3xQKtwmTdaqIrpSzQjslR-k3Q86RKcYI"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "466987975172-ffedndjb2iv344cec5avd3k4rba2uu16.apps.googleusercontent.com",
+              "client_id": "350038530235-l7m91cca1eb9p5ebc9gi7krlkefi5lg7.apps.googleusercontent.com",
               "client_type": 3
             },
             {
-              "client_id": "466987975172-c6lseevcrr4a9qtk81fv7qo00i5jjne0.apps.googleusercontent.com",
+              "client_id": "350038530235-20q0sjng2rgoaknotgv0udpb7grgtjgg.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.example.getxcart"
+                "bundle_id": "com.borntech.ecocart"
               }
             }
           ]

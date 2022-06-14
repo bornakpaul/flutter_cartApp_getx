@@ -1,4 +1,4 @@
-package com.example.getxcart
+package com.borntech.ecocart
 
 import io.flutter.embedding.android.FlutterActivity
 

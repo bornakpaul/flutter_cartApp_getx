@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>466987975172-c6lseevcrr4a9qtk81fv7qo00i5jjne0.apps.googleusercontent.com</string>
+	<string>350038530235-20q0sjng2rgoaknotgv0udpb7grgtjgg.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.466987975172-c6lseevcrr4a9qtk81fv7qo00i5jjne0</string>
+	<string>com.googleusercontent.apps.350038530235-20q0sjng2rgoaknotgv0udpb7grgtjgg</string>
 	<key>API_KEY</key>
-	<string>AIzaSyA7Id2LBNmnxpZy6eTNpRfKFL4_USDq2UA</string>
+	<string>AIzaSyAlKrPazGvVfkuWmQ4aYAO8xnoo0bwIFt4</string>
 	<key>GCM_SENDER_ID</key>
-	<string>466987975172</string>
+	<string>350038530235</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.example.getxcart</string>
+	<string>com.borntech.ecocart</string>
 	<key>PROJECT_ID</key>
-	<string>getxcart-9e6c4</string>
+	<string>ecocart-c66fe</string>
 	<key>STORAGE_BUCKET</key>
-	<string>getxcart-9e6c4.appspot.com</string>
+	<string>ecocart-c66fe.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,6 +29,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:466987975172:ios:1f4cac1847313ef3812b51</string>
+	<string>1:350038530235:ios:26a56c8ec2f193e25ff19e</string>
+	<key>DATABASE_URL</key>
+	<string>https://ecocart-c66fe-default-rtdb.firebaseio.com</string>
 </dict>
 </plist>
