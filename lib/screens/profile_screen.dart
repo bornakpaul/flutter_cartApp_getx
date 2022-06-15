@@ -3,6 +3,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
 import 'package:getxcart/constants/color_constants.dart';
 import 'package:getxcart/screens/add_product_screen.dart';
+import 'package:getxcart/screens/onboarding.dart';
 import 'package:getxcart/services/firestore_db.dart';
 import 'package:provider/provider.dart';
 
@@ -139,7 +140,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
             onPressed: () async {
               const storage = FlutterSecureStorage();
               await storage.delete(key: "isLoggedIn");
-              Get.until((route) => Get.currentRoute == "/onBoarding");
+              Navigator.of(context).pushAndRemoveUntil(
+                  MaterialPageRoute(builder: (c) => OnBoardingPage()),
+                  (route) => false);
             },
             child: const Text('Logout'),
           ),
