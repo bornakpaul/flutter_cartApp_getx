@@ -2,17 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
 import 'package:getxcart/constants/color_constants.dart';
+import 'package:getxcart/screens/add_product_screen.dart';
 import 'package:getxcart/services/firestore_db.dart';
 import 'package:provider/provider.dart';
 
-class ProfileScreen extends StatelessWidget {
+class ProfileScreen extends StatefulWidget {
   const ProfileScreen({Key? key}) : super(key: key);
 
+  @override
+  State<ProfileScreen> createState() => _ProfileScreenState();
+}
+
+class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Profile'),
+        title: const Text('Profile'),
         automaticallyImplyLeading: false,
         backgroundColor: kPrimaryColor,
         centerTitle: true,
@@ -33,7 +39,7 @@ class ProfileScreen extends StatelessWidget {
                       decoration: BoxDecoration(
                         color: kPrimaryColor,
                         borderRadius: BorderRadius.circular(50),
-                        boxShadow: [
+                        boxShadow: const [
                           BoxShadow(
                             color: Color.fromRGBO(0, 0, 0, 0.18),
                             offset: Offset(0, 0),
@@ -57,7 +63,7 @@ class ProfileScreen extends StatelessWidget {
                         decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(50),
-                            boxShadow: [
+                            boxShadow: const [
                               BoxShadow(
                                 color: Color.fromRGBO(0, 0, 0, 0.18),
                                 offset: Offset(0, 0),
@@ -65,8 +71,8 @@ class ProfileScreen extends StatelessWidget {
                                 spreadRadius: 4,
                               ),
                             ]),
-                        child: Padding(
-                          padding: const EdgeInsets.all(4.0),
+                        child: const Padding(
+                          padding: EdgeInsets.all(4.0),
                           child: Icon(
                             Icons.camera_alt_rounded,
                             color: kPrimaryColor,
@@ -76,7 +82,7 @@ class ProfileScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 FutureBuilder(
@@ -86,29 +92,9 @@ class ProfileScreen extends StatelessWidget {
                     if (snapshot.connectionState == ConnectionState.done) {
                       return displayUserInformation(context, snapshot);
                     } else {
-                      return CircularProgressIndicator();
+                      return const CircularProgressIndicator();
                     }
                   },
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    ElevatedButton(
-                      style: ButtonStyle(
-                        backgroundColor:
-                            MaterialStateProperty.all(kPrimaryColor),
-                      ),
-                      onPressed: () async {
-                        const storage = FlutterSecureStorage();
-                        await storage.delete(key: "isLoggedIn");
-                        Get.until((route) => Get.currentRoute == "/onBoarding");
-                      },
-                      child: const Text('Logout'),
-                    ),
-                  ],
                 ),
               ],
             ),
@@ -136,35 +122,55 @@ class ProfileScreen extends StatelessWidget {
               ),
               Text(
                 "${user.email ?? 'Anonymous'}",
-                style: TextStyle(
+                style: const TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
                     color: kPrimaryColor),
               ),
             ],
           ),
-          //   SizedBox(
-          //     height: 10,
-          //   ),
-          //   Row(
-          //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          //     children: [
-          //       Text(
-          //         "Name: ",
-          //         style: TextStyle(
-          //           fontSize: 18,
-          //           color: Colors.grey.shade500,
-          //         ),
-          //       ),
-          //       Text(
-          //         "${user.email ?? 'Anonymous'}",
-          //         style: TextStyle(
-          //             fontSize: 18,
-          //             fontWeight: FontWeight.bold,
-          //             color: kPrimaryColor),
-          //       ),
-          //     ],
-          //   ),
+          const SizedBox(
+            height: 20,
+          ),
+          ElevatedButton(
+            style: ButtonStyle(
+              backgroundColor: MaterialStateProperty.all(kPrimaryColor),
+            ),
+            onPressed: () async {
+              const storage = FlutterSecureStorage();
+              await storage.delete(key: "isLoggedIn");
+              Get.until((route) => Get.currentRoute == "/onBoarding");
+            },
+            child: const Text('Logout'),
+          ),
+          if (user.email == "admin@gmail.com") ...[
+            const SizedBox(
+              height: 20,
+            ),
+            ElevatedButton(
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all(kPrimaryColor),
+              ),
+              onPressed: () async {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const AddProductScreen(),
+                    ));
+              },
+              child: const Text('Upload new product'),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            ElevatedButton(
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all(kPrimaryColor),
+              ),
+              onPressed: () async {},
+              child: const Text('Delete a listing'),
+            ),
+          ],
         ],
       ),
     );

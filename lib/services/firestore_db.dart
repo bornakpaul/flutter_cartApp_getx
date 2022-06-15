@@ -17,11 +17,11 @@ class FirestoreDB {
 
   // GET UID
   Future<String> getCurrentUID() async {
-    return (await _firebaseAuth.currentUser!.uid);
+    return (_firebaseAuth.currentUser!.uid);
   }
 
   //
   Future getCurrentUser() async {
-    return await _firebaseAuth.currentUser!;
+    return _firebaseAuth.currentUser!;
   }
 }
