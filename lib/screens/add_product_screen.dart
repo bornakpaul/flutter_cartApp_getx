@@ -1,5 +1,12 @@
+import 'dart:io';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:getxcart/constants/color_constants.dart';
+import 'package:getxcart/models/product_model.dart';
+import 'package:getxcart/services/firestore_db.dart';
 import 'package:image_picker/image_picker.dart';
 
 class AddProductScreen extends StatefulWidget {
@@ -15,9 +22,12 @@ class _AddProductScreenState extends State<AddProductScreen> {
   final _productPriceController = TextEditingController();
   final _discountPriceController = TextEditingController();
   String? _selectedImagePath;
+  String? _selectedImageName;
   late ImagePicker _imagePicker;
   bool _loadingImage = false;
   ProductListingIds? _product;
+  File? _image;
+  bool _buttonLoading = false;
 
   @override
   void initState() {
@@ -42,6 +52,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
       setState(() {
         _loadingImage = true;
         _selectedImagePath = image.path;
+        _selectedImageName = image.name;
       });
     }
     setState(() {
@@ -97,6 +108,11 @@ class _AddProductScreenState extends State<AddProductScreen> {
   }
 
   Widget _renderImageCard() {
+    if (_selectedImagePath != null) {
+      setState(() {
+        _image = File(_selectedImagePath!);
+      });
+    }
     return Column(
       children: [
         Card(
@@ -110,8 +126,8 @@ class _AddProductScreenState extends State<AddProductScreen> {
               child: Stack(
                 children: [
                   if (_selectedImagePath != null)
-                    Image.network(
-                      _selectedImagePath!,
+                    Image.file(
+                      _image!,
                       width: 200,
                       height: 200,
                       fit: BoxFit.cover,
@@ -132,7 +148,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
         ),
         if (_selectedImagePath != null) ...[
           const SizedBox(
-            height: 32,
+            height: 8,
           ),
           TextButton(
             onPressed: () {
@@ -152,6 +168,50 @@ class _AddProductScreenState extends State<AddProductScreen> {
         ],
       ],
     );
+  }
+
+  void clearScreen() {
+    _productTitleController.clear();
+    _discountPriceController.clear();
+    _productPriceController.clear();
+    _selectedImagePath = null;
+    _product = null;
+    setState(() {});
+  }
+
+  Future<void> uploadProduct(context, String _imageUrl) async {
+    final uploadData = UploadProduct(
+      _product!.name,
+      _productTitleController.text,
+      _productPriceController.text,
+      _discountPriceController.text,
+      _imageUrl,
+    );
+    await FirebaseFirestore.instance
+        .collection(_product!.name)
+        .add(uploadData.toJson());
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        behavior: SnackBarBehavior.floating,
+        content:
+            Text('Listing of ${_productTitleController.text} was successful'),
+        duration: const Duration(seconds: 3),
+      ),
+    );
+    clearScreen();
+    setState(() {
+      _buttonLoading = false;
+    });
+  }
+
+  Future<void> uploadPhoto(context) async {
+    Reference reference =
+        FirebaseStorage.instance.ref().child('product/$_selectedImageName');
+    UploadTask uploadTask = reference.putFile(_image!);
+    TaskSnapshot snapshot = await uploadTask;
+    final _imageUrl = await snapshot.ref.getDownloadURL();
+    uploadProduct(context, _imageUrl);
   }
 
   @override
@@ -174,7 +234,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
               ),
               validator: (value) {
                 if (value == null) {
-                  return "Please select reschedule reason";
+                  return "Please select ProductListingIds";
                 }
                 return null;
               },
@@ -183,7 +243,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
                 color: kPrimaryColor,
               ),
               hint: const Text(
-                "* Select reschedule reason",
+                "* Select ProductListingIds",
                 style: TextStyle(),
               ),
               value: _product,
@@ -268,10 +328,27 @@ class _AddProductScreenState extends State<AddProductScreen> {
               height: 40,
             ),
             ElevatedButton(
-              onPressed: () {},
-              child: const Padding(
-                padding: EdgeInsets.all(16.0),
-                child: Text("Add Product"),
+              onPressed: () async {
+                if (_formKey.currentState!.validate()) {
+                  setState(() {
+                    _buttonLoading = true;
+                  });
+                  uploadPhoto(context);
+                }
+              },
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Center(
+                    child: _buttonLoading
+                        ? const SizedBox(
+                            height: 15,
+                            width: 15,
+                            child: CircularProgressIndicator(
+                              color: Colors.white,
+                              strokeWidth: 2,
+                            ),
+                          )
+                        : const Text("Add Product")),
               ),
               style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all(kPrimaryColor),

@@ -1,4 +1,26 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:getxcart/screens/add_product_screen.dart';
+import 'package:json_annotation/json_annotation.dart';
+
+part 'product_model.g.dart';
+
+@JsonSerializable(createFactory: false)
+class UploadProduct {
+  final String listingIds;
+  final String title;
+  final String price;
+  final String discount;
+  final String image;
+
+  UploadProduct(
+    this.listingIds,
+    this.title,
+    this.price,
+    this.discount,
+    this.image,
+  );
+
+  Map<String, dynamic> toJson() => _$UploadProductToJson(this);
+}
 
 class Product {
   //* Product's variables: name, price, imageUrl. All required.
