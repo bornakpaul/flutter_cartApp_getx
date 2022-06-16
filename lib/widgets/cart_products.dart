@@ -28,7 +28,7 @@ class CartProducts extends StatelessWidget {
 
 class CartProductCard extends StatelessWidget {
   final CartController controller;
-  final Product product;
+  final FetchProduct product;
   final int quantity;
   final int index;
   const CartProductCard({
@@ -52,16 +52,16 @@ class CartProductCard extends StatelessWidget {
           CircleAvatar(
             radius: 35,
             backgroundImage: NetworkImage(
-              product.imageUrl,
+              product.image,
             ),
           ),
-          SizedBox(
+          const SizedBox(
             width: 10.0,
           ),
           Expanded(
             child: Text(
-              product.name,
-              style: TextStyle(
+              product.title,
+              style: const TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w600,
               ),

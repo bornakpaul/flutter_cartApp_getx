@@ -6,28 +6,23 @@ import 'package:getxcart/controllers/product_controller.dart';
 import 'package:getxcart/models/product_model.dart';
 
 class MostPurchased extends StatelessWidget {
-//   final mostPurchasedController = Get.put(
-//     MostPurchasedController(),
-//   );
+  final mostPurchasedController = Get.put(
+    MostPurchasedController(),
+  );
 
   MostPurchased({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return
-        //Obx(
-        //() =>
-        Container(
-      height: 200,
-      child: ListView.builder(
-          scrollDirection: Axis.horizontal,
-          itemCount: Product.products.length,
-          itemBuilder: (BuildContext context, int index) {
-            return MostPurchasedCard(index: index);
-          }),
-    )
-        //)
-        ;
+    return Obx(() => SizedBox(
+          height: 200,
+          child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: mostPurchasedController.productsMostPurchased.length,
+              itemBuilder: (BuildContext context, int index) {
+                return MostPurchasedCard(index: index);
+              }),
+        ));
   }
 }
 
@@ -76,7 +71,7 @@ class MostPurchasedCard extends StatelessWidget {
                 ),
                 child: Image(
                   image: NetworkImage(
-                    Product.products[index].imageUrl,
+                    productController.productsMostPurchased[index].image,
                   ),
                   fit: BoxFit.fill,
                 ),
@@ -89,7 +84,7 @@ class MostPurchasedCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    Product.products[index].name,
+                    productController.productsMostPurchased[index].title,
                     style: const TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.w600,
@@ -102,7 +97,9 @@ class MostPurchasedCard extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Text(
-                        '₹' + Product.products[index].price.toString(),
+                        '₹' +
+                            productController
+                                .productsMostPurchased[index].price,
                         style: const TextStyle(
                           fontSize: 15,
                           fontWeight: FontWeight.w600,
@@ -113,7 +110,9 @@ class MostPurchasedCard extends StatelessWidget {
                         width: 10.0,
                       ),
                       Text(
-                        Product.products[index].discount.toString() + '% off',
+                        productController
+                                .productsMostPurchased[index].discount +
+                            '% off',
                         style: TextStyle(
                           fontSize: 13,
                           fontWeight: FontWeight.w600,
@@ -129,7 +128,8 @@ class MostPurchasedCard extends StatelessWidget {
                   ),
                   GestureDetector(
                     onTap: () {
-                      cartController.addProduct(Product.products[index]);
+                      cartController.addProduct(
+                          productController.productsMostPurchased[index]);
                     },
                     child: Container(
                       alignment: Alignment.center,

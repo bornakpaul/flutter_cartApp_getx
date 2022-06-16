@@ -4,10 +4,10 @@ import 'package:getxcart/models/product_model.dart';
 
 class CartController extends GetxController {
   //* Add a dictionary to store the products in the cart.
-  var _products = {}.obs;
+  final _products = {}.obs;
   int emptyCart = 1;
 
-  void addProduct(Product product) {
+  void addProduct(FetchProduct product) {
     if (_products.containsKey(product)) {
       _products[product] += 1;
     } else {
@@ -16,11 +16,11 @@ class CartController extends GetxController {
 
     Get.snackbar(
       'Product Added',
-      'You have added ${product.name} to the cart',
+      'You have added ${product.title} to the cart',
       snackPosition: SnackPosition.TOP,
-      duration: Duration(milliseconds: 1200),
-      animationDuration: Duration(milliseconds: 500),
-      titleText: Text(
+      duration: const Duration(milliseconds: 1200),
+      animationDuration: const Duration(milliseconds: 500),
+      titleText: const Text(
         'Product Added',
         style: TextStyle(
             color: Colors.black, fontWeight: FontWeight.w800, fontSize: 16),
@@ -28,7 +28,7 @@ class CartController extends GetxController {
     );
   }
 
-  void removeProduct(Product product) {
+  void removeProduct(FetchProduct product) {
     if (_products.containsKey(product) && _products[product] == 1) {
       _products.removeWhere((key, value) => key == product);
     } else {
@@ -37,11 +37,11 @@ class CartController extends GetxController {
 
     Get.snackbar(
       'Product Removed',
-      'You have removed ${product.name} from the cart',
+      'You have removed ${product.title} from the cart',
       snackPosition: SnackPosition.TOP,
-      duration: Duration(milliseconds: 1200),
-      animationDuration: Duration(milliseconds: 500),
-      titleText: Text(
+      duration: const Duration(milliseconds: 1200),
+      animationDuration: const Duration(milliseconds: 500),
+      titleText: const Text(
         'Product Removed',
         style: TextStyle(
             color: Colors.black, fontWeight: FontWeight.w800, fontSize: 16),
@@ -54,12 +54,12 @@ class CartController extends GetxController {
 
   //* get productSubtotal
   get productSubtotal => _products.entries
-      .map((product) => product.key.price * product.value)
+      .map((product) => int.parse(product.key.price) * product.value)
       .toList();
 
   //* get total
   get total => _products.entries
-      .map((product) => product.key.price * product.value)
+      .map((product) => int.parse(product.key.price) * product.value)
       .toList()
       .reduce((value, element) => value + element)
       .toStringAsFixed(2);

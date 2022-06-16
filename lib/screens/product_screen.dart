@@ -17,81 +17,107 @@ class ProductScreen extends StatefulWidget {
 }
 
 class _ProductScreenState extends State<ProductScreen> {
-  List<Product> _products = [];
+  List<FetchProduct> _products = [];
+  final _bookController = Get.put(
+    BooksController(),
+  );
+  final _noteBookController = Get.put(
+    NoteBookController(),
+  );
+  final _diaryController = Get.put(
+    DiaryController(),
+  );
+  final _pensController = Get.put(
+    PensController(),
+  );
+  final _pencilController = Get.put(
+    PencilController(),
+  );
+  final _highlighterController = Get.put(
+    HighlighterController(),
+  );
+  final _a4SheetController = Get.put(
+    A4SheetController(),
+  );
+  final _stickyController = Get.put(
+    StickyController(),
+  );
+  final _othersController = Get.put(
+    OthersController(),
+  );
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     if (widget.productName == "Highlighter") {
-      _products = Product.highLighterProducts;
+      _products = _highlighterController.productsHighlighter;
     } else if (widget.productName == "Books") {
-      _products = Product.bookProducts;
+      _products = _bookController.productsBooks;
     } else if (widget.productName == "Notebook") {
-      _products = Product.notebookProducts;
+      _products = _noteBookController.productsNoteBooks;
     } else if (widget.productName == "Diary") {
-      _products = Product.diaryProducts;
+      _products = _diaryController.productsDiary;
     } else if (widget.productName == "Pens") {
-      _products = Product.penProduct;
+      _products = _pensController.productsPens;
     } else if (widget.productName == "Pencil") {
-      _products = Product.pencilProducts;
+      _products = _pencilController.productsPencil;
     } else if (widget.productName == "A4 sheet") {
-      _products = Product.a4sheetProducts;
+      _products = _a4SheetController.productsA4Sheet;
     } else if (widget.productName == "StickyNotes") {
-      _products = Product.stickynoteProduct;
+      _products = _stickyController.productsStickyNotes;
     } else if (widget.productName == "Others") {
-      _products = Product.otherProducts;
+      _products = _othersController.productsOthers;
     }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: kPrimaryColor,
-        elevation: 0.0,
-        centerTitle: true,
-        title: Text(
-          widget.productName,
-          style: const TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
-            fontSize: 22,
+        appBar: AppBar(
+          backgroundColor: kPrimaryColor,
+          elevation: 0.0,
+          centerTitle: true,
+          title: Text(
+            widget.productName,
+            style: const TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+              fontSize: 22,
+            ),
           ),
         ),
-      ),
-      body: GridView.count(
-        crossAxisCount: 2,
-        crossAxisSpacing: 10,
-        mainAxisSpacing: 10,
-        shrinkWrap: true,
-        scrollDirection: Axis.vertical,
-        physics: ScrollPhysics(),
-        children: _products
-            .map((e) => ProductCards(
-                image: e.imageUrl,
-                discount: e.discount,
-                price: e.price,
-                title: e.name,
-                product: e))
-            .toList(),
-      ),
-    );
+        body: Obx(
+          () => GridView.count(
+            crossAxisCount: 2,
+            crossAxisSpacing: 10,
+            mainAxisSpacing: 10,
+            shrinkWrap: true,
+            scrollDirection: Axis.vertical,
+            physics: const ScrollPhysics(),
+            children: _products
+                .map((e) => ProductCards(
+                    image: e.image,
+                    discount: e.discount,
+                    price: e.price,
+                    title: e.title,
+                    product: e))
+                .toList(),
+          ),
+        ));
   }
 }
 
 class ProductCards extends StatelessWidget {
   final cartController = Get.put(CartController());
-  final MostPurchasedController productController = Get.find();
-  final Product product;
-  //final int index;
+  final FetchProduct product;
+
   final String image;
   final String title;
-  final double price;
-  final double discount;
+  final String price;
+  final String discount;
   ProductCards({
     Key? key,
-    //required this.index,
     required this.image,
     required this.discount,
     required this.price,
@@ -136,7 +162,7 @@ class ProductCards extends StatelessWidget {
                 ),
                 child: Image(
                   image: NetworkImage(image, scale: 10),
-                  fit: BoxFit.fill,
+                  fit: BoxFit.cover,
                 ),
               ),
             ),
