@@ -88,22 +88,26 @@ class _ProductScreenState extends State<ProductScreen> {
           ),
         ),
         body: Obx(
-          () => GridView.count(
-            crossAxisCount: 2,
-            crossAxisSpacing: 10,
-            mainAxisSpacing: 10,
-            shrinkWrap: true,
-            scrollDirection: Axis.vertical,
-            physics: const ScrollPhysics(),
-            children: _products
-                .map((e) => ProductCards(
-                    image: e.image,
-                    discount: e.discount,
-                    price: e.price,
-                    title: e.title,
-                    product: e))
-                .toList(),
-          ),
+          () => _products.isNotEmpty
+              ? GridView.count(
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 10,
+                  mainAxisSpacing: 10,
+                  shrinkWrap: true,
+                  scrollDirection: Axis.vertical,
+                  physics: const ScrollPhysics(),
+                  children: _products
+                      .map((e) => ProductCards(
+                          image: e.image,
+                          discount: e.discount,
+                          price: e.price,
+                          title: e.title,
+                          product: e))
+                      .toList(),
+                )
+              : const Center(
+                  child: Text("Products yet to be listed"),
+                ),
         ));
   }
 }

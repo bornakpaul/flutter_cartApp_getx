@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:getxcart/constants/color_constants.dart';
 import 'package:getxcart/screens/product_screen.dart';
 import 'package:getxcart/widgets/most_purchased.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -231,6 +232,20 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ],
           ),
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: kPrimaryColor,
+        onPressed: () async {
+          int number = 7337743323;
+          String message =
+              "Hey EcoCart team. I am facing some issues. Could you please assist me ?";
+          String _url = "whatsapp://send?phone=$number&text=$message";
+          await launchUrl(Uri.parse(_url));
+        },
+        child: const Icon(
+          Icons.support_agent_rounded,
+          size: 32,
         ),
       ),
     );

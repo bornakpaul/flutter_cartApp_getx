@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:get/get.dart';
 import 'package:getxcart/constants/color_constants.dart';
 import 'package:getxcart/screens/add_product_screen.dart';
 import 'package:getxcart/screens/onboarding.dart';
@@ -162,16 +161,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     ));
               },
               child: const Text('Upload new product'),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            ElevatedButton(
-              style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(kPrimaryColor),
-              ),
-              onPressed: () async {},
-              child: const Text('Delete a listing'),
             ),
           ],
         ],

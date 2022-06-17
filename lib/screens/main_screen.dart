@@ -58,20 +58,6 @@ class _MainScreenState extends State<MainScreen> {
           currentIndex: controller.tabIndex,
           onTap: controller.changeTabIndex,
         ),
-        floatingActionButton: FloatingActionButton(
-          backgroundColor: kPrimaryColor,
-          onPressed: () async {
-            int number = 7337743323;
-            String message =
-                "Hey EcoCart team. I am facing some issues. Could you please assist me ?";
-            String _url = "whatsapp://send?phone=$number&text=$message";
-            await launchUrl(Uri.parse(_url));
-          },
-          child: const Icon(
-            Icons.support_agent_rounded,
-            size: 32,
-          ),
-        ),
       );
     });
   }

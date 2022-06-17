@@ -62,7 +62,7 @@ class CartScreen extends StatelessWidget {
                     const SizedBox(height: 8),
                     CartTotal(),
                     const SizedBox(height: 8),
-                    PlaceOrderWidget(),
+                    const PlaceOrderWidget(),
                     const SizedBox(height: 15),
                   ],
                 ),
@@ -102,9 +102,9 @@ class _PlaceOrderWidgetState extends State<PlaceOrderWidget> {
     var options = {
       'key': 'rzp_test_gTeTVyss8y5SVC',
       'amount': "$amountPay",
-      'name': 'Bornak Paul',
+      'name': 'EcoCart',
       'description': 'Shopping',
-      'prefill': {'contact': '8752901454', 'email': 'bornakpaul@gmail.com'}
+      'prefill': {'contact': '0000000000', 'email': '0000@gmail.com'}
     };
 
     try {
@@ -119,27 +119,45 @@ class _PlaceOrderWidgetState extends State<PlaceOrderWidget> {
   }
 
   void _handlePaymentError(PaymentFailureResponse response) {
-    print("Payment Failed");
-
-    print("${response.code} \n${response.message}");
+    //print("${response.code} \n${response.message}");
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        behavior: SnackBarBehavior.floating,
+        content: Text(
+            response.message != null ? response.message! : 'payment failed'),
+        duration: const Duration(seconds: 3),
+      ),
+    );
   }
 
   void _handlePaymentSuccess(PaymentSuccessResponse response) {
-    print("Payment Sucessfull");
-
     print(
         "${response.orderId} \n${response.paymentId} \n${response.signature}");
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        behavior: SnackBarBehavior.floating,
+        content: Text(response.signature != null
+            ? response.signature!
+            : 'payment successfull'),
+        duration: const Duration(seconds: 3),
+      ),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: () {
-        launchRazorPay();
-      },
-      child: const Text("Confirm Order"),
-      style: ButtonStyle(
-        backgroundColor: MaterialStateProperty.all<Color>(kPrimaryColor),
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 24),
+      width: double.infinity,
+      height: 40,
+      child: ElevatedButton(
+        onPressed: () {
+          launchRazorPay();
+        },
+        child: const Text("Confirm Order"),
+        style: ButtonStyle(
+          backgroundColor: MaterialStateProperty.all<Color>(kPrimaryColor),
+        ),
       ),
     );
   }

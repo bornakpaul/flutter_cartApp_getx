@@ -49,10 +49,28 @@ class CartProductCard extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          CircleAvatar(
-            radius: 35,
-            backgroundImage: NetworkImage(
-              product.image,
+          Container(
+            width: 80,
+            height: 80,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.withOpacity(0.3),
+                  offset: const Offset(0, 4),
+                  blurRadius: 6,
+                  spreadRadius: 4,
+                ),
+              ],
+            ),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(10),
+              child: Image(
+                image: NetworkImage(
+                  product.image,
+                ),
+                fit: BoxFit.fill,
+              ),
             ),
           ),
           const SizedBox(
@@ -71,11 +89,11 @@ class CartProductCard extends StatelessWidget {
             onPressed: () {
               controller.removeProduct(product);
             },
-            icon: Icon(Icons.remove_circle),
+            icon: const Icon(Icons.remove_circle),
           ),
           Text(
-            '${quantity}',
-            style: TextStyle(
+            quantity.toString(),
+            style: const TextStyle(
               fontSize: 15,
               fontWeight: FontWeight.w600,
               color: Colors.blue,
@@ -85,7 +103,7 @@ class CartProductCard extends StatelessWidget {
             onPressed: () {
               controller.addProduct(product);
             },
-            icon: Icon(Icons.add_circle),
+            icon: const Icon(Icons.add_circle),
           ),
         ],
       ),
